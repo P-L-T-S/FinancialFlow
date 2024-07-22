@@ -1,0 +1,95 @@
+﻿@page "/transacoes"
+@using FinancialCore.Models
+@using FinancialCore.Enums
+@inherits GetAllTransactionsPage
+
+<MudText Typo="Typo.h3">Transações</MudText>
+
+<div class="d-flex justify-end">
+    <MudButton
+        Variant="Variant.Filled"
+        Color="Color.Primary"
+        StartIcon="@Icons.Material.Filled.Add"
+        Href="transacoes/adicionar">
+        Nova Transação
+    </MudButton>
+</div>
+
+<MudPaper Class="pa-8 d-flex flex-row gap-8">
+    <MudDatePicker
+        Label="Desde:"
+        @bind-Date="InputModel.StartDate"
+        PickerVariant="PickerVariant.Dialog"/>
+
+    <MudDatePicker
+        Label="Até:"
+        @bind-Date="InputModel.EndDate"
+        PickerVariant="PickerVariant.Dialog"/>
+
+    <MudButton
+        Variant="Variant.Filled"
+        Color="Color.Primary"
+        OnClick="@FetchTransactions">
+        Buscar
+    </MudButton>
+</MudPaper>
+
+<MudDataGrid
+    T="Transaction"
+    Items="Transactions"
+    Class="mt-4 pa-4 rounded-xl"
+    ReadOnly="false"
+    EditMode="DataGridEditMode.Form"
+    EditTrigger="DataGridEditTrigger.Manual">
+
+    <Columns>
+        <PropertyColumn
+            T="Transaction"
+            TProperty="string"
+            Property="transaction => transaction.PaidOrReceivedAt!.Value.ToShortDateString()"
+            Title="Data"
+            HeaderStyle="font-weight: bold"/>
+
+        <PropertyColumn
+            T="Transaction"
+            TProperty="string"
+            Property="t => t.Title"
+            Title="Descrição"
+            HeaderStyle="font-weight: bold"/>
+
+        <PropertyColumn
+            T="Transaction"
+            TProperty="string"
+            Property="t => t.Category.Title"
+            Title="Categoria"
+            HeaderStyle="font-weight: bold"/>
+
+        <PropertyColumn
+            T="Transaction"
+            TProperty="decimal"
+            Property="t => t.Amount"
+            Title="Valor">
+            <CellTemplate>
+                <b style="@StylingAmountByType(context.Item.Type)">
+                    @context.Item.Amount
+                </b>
+                <MudText Color="Color.Primary"/>
+            </CellTemplate>
+        </PropertyColumn>
+
+        <TemplateColumn
+            T="Transaction">
+            <CellTemplate>
+                <MudIconButton
+                    Icon="@Icons.Material.Filled.Edit"
+                    OnClick="@context.Actions.StartEditingItemAsync"/>
+
+                <MudIconButton
+                    Icon="@Icons.Material.Filled.Delete"
+                    Color="Color.Error"
+                    OnClick="() => OnClickDeleteButton(context.Item.Id)"/>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+
+</MudDataGrid>

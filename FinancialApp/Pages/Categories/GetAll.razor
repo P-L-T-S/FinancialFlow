@@ -1,0 +1,71 @@
+﻿@page "/categorias"
+@inherits GetAllCategoriesPage
+
+
+<MudText Typo="Typo.h3">Categorias</MudText>
+
+<div class="d-flex justify-end">
+    <MudButton
+        Variant="Variant.Filled"
+        Color="Color.Primary"
+        StartIcon="@Icons.Material.Sharp.Add"
+        Href="/categorias/adicionar">
+        Nova categoria
+    </MudButton>
+</div>
+
+<MudDataGrid
+    Loading="@IsBusy"
+    Items="IsBusy ? DefaultValues : Categories"
+    Filterable="true"
+    ReadOnly="false"
+    EditMode="DataGridEditMode.Form"
+    EditTrigger="DataGridEditTrigger.Manual"
+    Class="mt-4"
+    RowClass="cursor-pointer">
+    <Columns>
+        @if (IsBusy)
+        {
+            <TemplateColumn Title="#" Class="d-flex justify-center">
+                <CellTemplate>
+                    <MudProgressCircular
+                        Indeterminate="true"/>
+                </CellTemplate>
+            </TemplateColumn>
+
+            <TemplateColumn Title="Categoria">
+                <CellTemplate>
+                    <MudProgressCircular
+                        Indeterminate="true"/>
+                </CellTemplate>
+            </TemplateColumn>
+
+            <TemplateColumn Title="Excluir">
+                <CellTemplate>
+                    <MudIconButton
+                        Disabled
+                        Color="Color.Secondary"
+                        Icon="@Icons.Material.Sharp.Delete"/>
+                </CellTemplate>
+            </TemplateColumn>
+        }
+        else
+        {
+            <PropertyColumn Property="x => x.Id" Title="#"/>
+            <PropertyColumn Property="x => x.Title" Title="Categoria"/>
+            <PropertyColumn Property="(x) => x.Description" Title="Descrição">
+                <EditTemplate>
+                    <MudTextField Variant="Variant.Filled" Lines="3" @bind-Value="context.Item.Description"/>
+                </EditTemplate>
+            </PropertyColumn>
+            <TemplateColumn>
+                <CellTemplate>
+                    <MudIconButton
+                        Color="Color.Error"
+                        Icon="@Icons.Material.Sharp.Delete"
+                        OnClick="() => OnClickDeleteButton(context.Item.Id, context.Item.Title)"/>
+                </CellTemplate>
+            </TemplateColumn>
+        }
+    </Columns>
+</MudDataGrid>

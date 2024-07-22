@@ -1,0 +1,11 @@
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\bin\Debug\net8.0\FinancialCore.deps.json
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\bin\Debug\net8.0\FinancialCore.dll
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\bin\Debug\net8.0\FinancialCore.pdb
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\obj\Debug\net8.0\FinancialCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\obj\Debug\net8.0\FinancialCore.AssemblyInfoInputs.cache
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\obj\Debug\net8.0\FinancialCore.AssemblyInfo.cs
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\obj\Debug\net8.0\FinancialCore.csproj.CoreCompileInputs.cache
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\obj\Debug\net8.0\FinancialCore.dll
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\obj\Debug\net8.0\refint\FinancialCore.dll
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\obj\Debug\net8.0\FinancialCore.pdb
+C:\Users\pedro\projetos\FinancialFlow\FinancialCore\obj\Debug\net8.0\ref\FinancialCore.dll
